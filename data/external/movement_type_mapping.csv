@@ -1,0 +1,13 @@
+tipo_movimentacao;tipo_movimentacao_label;status_validacao
+31;Desligamento por demissao sem justa causa;pendente_layout_oficial
+32;Desligamento por demissao com justa causa;pendente_layout_oficial
+33;Culpa reciproca;pendente_layout_oficial
+35;Admissao por reintegracao;pendente_layout_oficial
+40;Desligamento a pedido;pendente_layout_oficial
+43;Termino de contrato por prazo determinado;pendente_layout_oficial
+50;Desligamento por aposentadoria;pendente_layout_oficial
+60;Desligamento por morte;pendente_layout_oficial
+90;Desligamento por acordo empregado e empregador;pendente_layout_oficial
+97;Admissao;pendente_layout_oficial
+98;Admissao por transferencia;pendente_layout_oficial
+

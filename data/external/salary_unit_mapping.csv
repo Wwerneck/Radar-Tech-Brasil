@@ -1,0 +1,9 @@
+unidade_salario_codigo;unidade_salario_label;status_validacao
+1;Por hora;pendente_layout_oficial
+2;Por dia;pendente_layout_oficial
+3;Por semana;pendente_layout_oficial
+4;Por quinzena;pendente_layout_oficial
+5;Por mes;pendente_layout_oficial
+6;Por tarefa;pendente_layout_oficial
+7;Outros;pendente_layout_oficial
+

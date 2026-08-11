@@ -1,0 +1,15 @@
+grau_instrucao;escolaridade
+1;Analfabeto
+2;Fundamental incompleto
+3;Fundamental completo
+4;Medio incompleto
+5;Medio completo
+6;Superior incompleto
+7;Superior completo
+8;Mestrado
+9;Doutorado
+10;Pos-graduacao completa
+11;Pos-graduacao incompleta
+80;Pos-graduacao completa
+99;Nao informado
+

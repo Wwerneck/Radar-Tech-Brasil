@@ -1,0 +1,40 @@
+codigo_cbo;ocupacao;categoria_tech;registros;admissoes;desligamentos;remuneracao_media;remuneracao_mediana;saldo_empregos
+212405;Analista de desenvolvimento de sistemas;Desenvolvimento de Software;12917;6843;6074;8271.607945099257;7292.975;769
+317210;Técnico de suporte ao usuário de tecnologia da informação;Suporte Tecnico;6095;3299;2796;2521.8677761341223;2091.52;503
+212420;Analista de suporte computacional;Suporte Tecnico;6006;3101;2905;3941.3829290236586;3000.0;196
+317110;Desenvolvedor de sistemas de tecnologia da informação (técnico);Desenvolvimento de Software;5399;2767;2632;5634.588934867323;4303.48;135
+732130;Instalador-reparador de redes telefônicas e de comunicação de dados;Redes;4167;2056;2111;1818.9525778967868;1700.0;-55
+313220;Técnico em manutenção de equipamentos de informática;Suporte Tecnico;2585;1241;1344;2257.763002327386;2056.69;-103
+212410;Analista de redes e de comunicação de dados;Redes;2501;1256;1245;5589.927305844676;4096.5;11
+732105;Eletricista de manutenção de linhas elétricas, telefônicas e de comunicação de dados;Redes;2020;1226;794;2249.2130406746032;2086.33;432
+313310;Técnico de rede (telecomunicações);Redes;2009;1077;932;2028.9833748753738;1789.59;145
+317205;Operador de computador;Infraestrutura;1722;849;873;2188.0230650887574;1987.5;-24
+731320;Instalador-reparador de linhas e aparelhos de telecomunicações;Redes;1565;717;848;1802.493324808184;1715.35;-131
+142520;Gerente de projetos de tecnologia da informação;Gestao de Tecnologia;1203;563;640;13504.865357737104;12000.0;-77
+372205;Operador de rede de teleprocessamento;Redes;1158;525;633;1596.506261925412;1628.0;-108
+731110;Montador de equipamentos eletrônicos (computadores e equipamentos auxiliares);Infraestrutura;946;421;525;2171.410455026455;2368.3;-104
+731325;Instalador-reparador de redes e cabos telefônicos;Redes;725;396;329;1830.842427586207;1792.0;67
+212320;Administrador em segurança da informação;Seguranca da Informacao;716;399;317;8678.981118881118;7000.0;82
+212430;Analista de testes de tecnologia da informação;Desenvolvimento de Software;707;365;342;6158.045176803395;5869.79;23
+212215;Engenheiros de sistemas operacionais em computação;Infraestrutura;603;306;297;15286.553006644519;12654.575;9
+142510;Gerente de desenvolvimento de sistemas;Gestao de Tecnologia;568;237;331;19097.264558303887;18759.5;-94
+212205;Engenheiro de aplicativos em computação;Desenvolvimento de Software;564;367;197;13659.136578014184;10493.9;170
+212305;Administrador de banco de dados;Dados e Banco de Dados;560;263;297;8540.72946236559;7933.115;-34
+313305;Técnico de comunicação de dados;Redes;545;308;237;2053.5913235294115;1949.2;71
+212415;Analista de sistemas de automação;Desenvolvimento de Software;525;297;228;5753.14299047619;4714.65;69
+212315;Administrador de sistemas operacionais;Infraestrutura;461;268;193;6842.988633405639;5095.0;75
+212425;Arquiteto de soluções de tecnologia da informação;Cloud e DevOps;329;184;145;13959.349969604862;13000.0;39
+142530;Gerente de suporte técnico de tecnologia da informação;Gestao de Tecnologia;324;140;184;9611.976913580247;7146.15;-44
+212310;Administrador de redes;Redes;288;142;146;6216.017118055555;4509.5;-4
+142505;Gerente de infraestrutura de tecnologia da informação;Gestao de Tecnologia;274;134;140;12589.29912408759;10346.7;-6
+142515;Gerente de operação de tecnologia da informação;Gestao de Tecnologia;228;94;134;15238.69605263158;13305.535;-40
+142535;Tecnólogo em gestão da tecnologia da informação;Gestao de Tecnologia;224;89;135;7166.586502242153;5129.6;-46
+211220;Cientista de dados;Dados e Banco de Dados;187;107;80;9437.19747311828;8000.0;27
+203105;Pesquisador em ciências da computação e informática;Outras ocupacoes de Tecnologia;175;90;85;9498.420632183908;8800.0;5
+234120;Professor de computação (no ensino superior);Outras ocupacoes de Tecnologia;130;110;20;3686.713867924528;2329.2;90
+123605;Diretor de tecnologia da informação;Gestao de Tecnologia;88;34;54;39938.48272727273;40498.625;-20
+142525;Gerente de segurança da informação;Seguranca da Informacao;79;34;45;19180.877215189874;19302.1;-11
+731330;Reparador de aparelhos de telecomunicações em laboratório;Redes;47;25;22;1959.8828260869566;1789.73;3
+212210;Engenheiro de equipamentos em computação;Infraestrutura;33;18;15;10393.8184375;9626.825;3
+142135;Oficial de proteção de dados pessoais (dpo);Seguranca da Informacao;21;4;17;6896.19380952381;3768.0;-13
+214350;Engenheiro de redes de comunicação;Redes;19;12;7;23682.396666666667;20000.0;5
