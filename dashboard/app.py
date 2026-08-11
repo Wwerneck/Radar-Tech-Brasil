@@ -34,6 +34,12 @@ def format_currency(value: float) -> str:
     return "R$ " + formatted.replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def format_competence(value: str) -> str:
+    """Format YYYYMM competence as MM/YYYY for Brazilian readers."""
+    value = str(value)
+    return f"{value[4:6]}/{value[:4]}"
+
+
 overview = load_csv("agg_tech_overview_mensal.csv")
 by_category = load_csv("agg_tech_by_category_mensal.csv")
 by_uf = load_csv("agg_tech_by_uf_mensal_enriched.csv")
@@ -43,6 +49,7 @@ by_education = load_csv("agg_tech_by_education_mensal_enriched.csv")
 
 for frame in [overview, by_category, by_uf, by_occupation, by_age_group, by_education]:
     frame["competencia"] = frame["competencia"].astype(str)
+    frame["competencia_label"] = frame["competencia"].map(format_competence)
 
 competences = sorted(overview["competencia"].unique())
 categories = sorted(by_category["categoria_tech"].unique())
@@ -56,13 +63,17 @@ with st.sidebar:
         "Periodo",
         options=competences,
         value=(competences[0], competences[-1]),
+        format_func=format_competence,
     )
     start_period, end_period = selected_period
     selected_competences = [
         competence for competence in competences if start_period <= competence <= end_period
     ]
 
-    st.caption(f"{selected_competences[0]} a {selected_competences[-1]}")
+    st.caption(
+        f"{format_competence(selected_competences[0])} a "
+        f"{format_competence(selected_competences[-1])}"
+    )
 
     st.divider()
     st.subheader("Categorias")
@@ -131,11 +142,11 @@ tabs = st.tabs(
 with tabs[0]:
     fig = px.line(
         filtered_overview,
-        x="competencia",
+        x="competencia_label",
         y=["total_admissoes", "total_desligamentos", "saldo_empregos"],
         markers=True,
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"value": "Registros", "competencia": "Competencia", "variable": "Metrica"},
+        labels={"value": "Registros", "competencia_label": "Competencia", "variable": "Metrica"},
         title="Evolucao mensal do mercado tech formal",
     )
     fig.update_xaxes(type="category")
@@ -143,11 +154,11 @@ with tabs[0]:
 
     salary_fig = px.line(
         filtered_overview,
-        x="competencia",
+        x="competencia_label",
         y=["remuneracao_media", "remuneracao_mediana"],
         markers=True,
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"value": "Remuneracao", "competencia": "Competencia", "variable": "Metrica"},
+        labels={"value": "Remuneracao", "competencia_label": "Competencia", "variable": "Metrica"},
         title="Evolucao salarial",
     )
     salary_fig.update_xaxes(type="category")
