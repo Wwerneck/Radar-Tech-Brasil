@@ -52,12 +52,39 @@ st.caption("Inteligencia de Dados sobre o Mercado de Tecnologia Brasileiro")
 
 with st.sidebar:
     st.header("Filtros")
-    selected_competences = st.multiselect("Periodo", competences, default=competences)
-    selected_categories = st.multiselect(
-        "Categoria de tecnologia",
-        categories,
-        default=categories,
+    selected_period = st.select_slider(
+        "Periodo",
+        options=competences,
+        value=(competences[0], competences[-1]),
     )
+    start_period, end_period = selected_period
+    selected_competences = [
+        competence for competence in competences if start_period <= competence <= end_period
+    ]
+
+    st.caption(f"{selected_competences[0]} a {selected_competences[-1]}")
+
+    st.divider()
+    st.subheader("Categorias")
+
+    category_action = st.radio(
+        "Selecao",
+        ["Todas", "Personalizada"],
+        horizontal=True,
+        label_visibility="collapsed",
+    )
+
+    if category_action == "Todas":
+        selected_categories = categories
+        st.caption(f"{len(categories)} categorias selecionadas")
+    else:
+        selected_categories = []
+        for category in categories:
+            if st.checkbox(category, value=True, key=f"category_{category}"):
+                selected_categories.append(category)
+
+        if not selected_categories:
+            st.warning("Selecione pelo menos uma categoria.")
 
 filtered_overview = overview[overview["competencia"].isin(selected_competences)]
 filtered_category = by_category[
