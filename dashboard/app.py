@@ -152,10 +152,23 @@ with tabs[0]:
     )
     salary_fig.update_xaxes(type="category")
     st.plotly_chart(salary_fig, use_container_width=True)
-    st.caption(
-        "Remuneracao media: soma dos salarios validos dividida pela quantidade de registros. "
-        "Remuneracao mediana: valor central da distribuicao salarial, menos sensivel a salarios muito altos. "
-        "Ambas excluem salarios iguais a zero e registros marcados como salario extremo."
+    st.markdown(
+        """
+        <div style="font-size: 0.92rem; line-height: 1.55; margin-top: -0.75rem; color: #64748b;">
+          <div>
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #2563eb; margin-right: 8px;"></span>
+            <strong>Remuneracao media:</strong> soma dos salarios validos dividida pela quantidade de registros.
+          </div>
+          <div>
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #16a34a; margin-right: 8px;"></span>
+            <strong>Remuneracao mediana:</strong> valor central da distribuicao salarial, menos sensivel a salarios muito altos.
+          </div>
+          <div style="margin-top: 0.35rem;">
+            Ambas excluem salarios iguais a zero e registros marcados como salario extremo.
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
 with tabs[1]:
