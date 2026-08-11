@@ -152,6 +152,11 @@ with tabs[0]:
     )
     salary_fig.update_xaxes(type="category")
     st.plotly_chart(salary_fig, use_container_width=True)
+    st.caption(
+        "Remuneracao media: soma dos salarios validos dividida pela quantidade de registros. "
+        "Remuneracao mediana: valor central da distribuicao salarial, menos sensivel a salarios muito altos. "
+        "Ambas excluem salarios iguais a zero e registros marcados como salario extremo."
+    )
 
 with tabs[1]:
     category_total = (
