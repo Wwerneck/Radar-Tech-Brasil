@@ -1,0 +1,484 @@
+{
+  "files": {
+    "extract:202606": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:03:24.449513+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202606.txt",
+        "size_mb": 427.31,
+        "sha256": "ff9ee116b70fd13e3978358f71e48a915d42256c2d1f877adbaa82f0b8610131"
+      }
+    },
+    "process:202606": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:04:13.631641+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202606.csv",
+        "size_mb": 716.74
+      }
+    },
+    "enrich:202606": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:04:25.015752+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202606.csv",
+        "size_mb": 18.58
+      }
+    },
+    "aggregate:202606": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:04:25.379768+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202606.csv"
+      }
+    },
+    "download:202507": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:06:34.244129+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202507.7z",
+        "size_mb": 51.57
+      }
+    },
+    "extract:202507": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:06:37.337294+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202507.txt",
+        "size_mb": 434.93,
+        "sha256": "10d1ad612d9ddf848f33cad32d81874a1bd4269c9f285601481c36db0aa847a0"
+      }
+    },
+    "process:202507": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:07:27.440332+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202507.csv",
+        "size_mb": 729.64
+      }
+    },
+    "enrich:202507": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:07:38.870572+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202507.csv",
+        "size_mb": 19.58
+      }
+    },
+    "aggregate:202507": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:07:39.268505+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202507.csv"
+      }
+    },
+    "download:202508": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:07:56.045739+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202508.7z",
+        "size_mb": 51.18
+      }
+    },
+    "extract:202508": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:07:59.158664+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202508.txt",
+        "size_mb": 430.86,
+        "sha256": "0a2748c9e4703e7c970398317e426657734804f345ef00ca67245c573a919bb6"
+      }
+    },
+    "process:202508": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:08:48.371971+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202508.csv",
+        "size_mb": 722.8
+      }
+    },
+    "enrich:202508": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:08:59.643306+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202508.csv",
+        "size_mb": 19.91
+      }
+    },
+    "aggregate:202508": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:09:00.005465+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202508.csv"
+      }
+    },
+    "download:202509": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:09:17.701982+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202509.7z",
+        "size_mb": 51.48
+      }
+    },
+    "extract:202509": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:09:20.838847+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202509.txt",
+        "size_mb": 434.85,
+        "sha256": "18d428b7dd770661c1f2295c2baa6835e3a12c8cae0998389c43ebac18ab212a"
+      }
+    },
+    "process:202509": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:10:13.088430+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202509.csv",
+        "size_mb": 729.32
+      }
+    },
+    "enrich:202509": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:10:28.254334+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202509.csv",
+        "size_mb": 19.68
+      }
+    },
+    "aggregate:202509": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:10:28.787241+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202509.csv"
+      }
+    },
+    "download:202510": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:10:48.678463+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202510.7z",
+        "size_mb": 52.45
+      }
+    },
+    "extract:202510": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:10:52.039609+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202510.txt",
+        "size_mb": 443.44,
+        "sha256": "055bfe1b76e84d9f651b03f39bde432c7b7ce34e751b6e8a7308efdadba84581"
+      }
+    },
+    "process:202510": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:11:49.833523+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202510.csv",
+        "size_mb": 748.14
+      }
+    },
+    "enrich:202510": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:12:04.881104+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202510.csv",
+        "size_mb": 20.64
+      }
+    },
+    "aggregate:202510": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:12:05.350020+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202510.csv"
+      }
+    },
+    "download:202511": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:12:21.782172+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202511.7z",
+        "size_mb": 45.39
+      }
+    },
+    "extract:202511": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:12:24.624822+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202511.txt",
+        "size_mb": 385.4,
+        "sha256": "8b2b9cebe1781f76dcef8d9b44b2e444d3d1b777b06506fc72380c104563111e"
+      }
+    },
+    "process:202511": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:13:16.193171+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202511.csv",
+        "size_mb": 650.2
+      }
+    },
+    "enrich:202511": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:13:28.819652+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202511.csv",
+        "size_mb": 17.48
+      }
+    },
+    "aggregate:202511": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:13:29.267830+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202511.csv"
+      }
+    },
+    "download:202512": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:13:43.629258+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202512.7z",
+        "size_mb": 42.8
+      }
+    },
+    "extract:202512": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:13:46.261712+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202512.txt",
+        "size_mb": 364.82,
+        "sha256": "8af9124445f9a25134a898dc1266a9b27d7699cd549ef428c863871d1ef3736d"
+      }
+    },
+    "process:202512": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:14:34.715962+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202512.csv",
+        "size_mb": 616.7
+      }
+    },
+    "enrich:202512": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:14:44.360774+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202512.csv",
+        "size_mb": 16.52
+      }
+    },
+    "aggregate:202512": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:14:44.607779+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202512.csv"
+      }
+    },
+    "download:202601": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:14:58.915622+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202601.7z",
+        "size_mb": 50.51
+      }
+    },
+    "extract:202601": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:15:01.640677+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202601.txt",
+        "size_mb": 428.04,
+        "sha256": "577814d43f2ff2acf26d34a79fb3a758267ae89fffcec2e24c37cc164dfcc3dc"
+      }
+    },
+    "process:202601": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:15:45.471089+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202601.csv",
+        "size_mb": 717.95
+      }
+    },
+    "enrich:202601": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:15:55.097697+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202601.csv",
+        "size_mb": 18.92
+      }
+    },
+    "aggregate:202601": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:15:55.416706+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202601.csv"
+      }
+    },
+    "download:202602": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:16:31.734156+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202602.7z",
+        "size_mb": 52.97
+      }
+    },
+    "extract:202602": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:16:34.625400+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202602.txt",
+        "size_mb": 448.17,
+        "sha256": "5534a81c3469b75a901d1904a02cc589f6945a3fdd12983b913afc7df75c965c"
+      }
+    },
+    "process:202602": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:17:22.829183+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202602.csv",
+        "size_mb": 751.64
+      }
+    },
+    "enrich:202602": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:17:33.360960+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202602.csv",
+        "size_mb": 18.3
+      }
+    },
+    "aggregate:202602": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:17:33.685973+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202602.csv"
+      }
+    },
+    "download:202603": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:17:54.124250+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202603.7z",
+        "size_mb": 56.64
+      }
+    },
+    "extract:202603": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:17:57.215600+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202603.txt",
+        "size_mb": 479.91,
+        "sha256": "fbddc1adb38befcf1230a2f2073e94d57543479ccb322bed55a9d1fde8c89e2a"
+      }
+    },
+    "process:202603": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:18:48.567258+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202603.csv",
+        "size_mb": 804.81
+      }
+    },
+    "enrich:202603": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:19:00.652121+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202603.csv",
+        "size_mb": 20.27
+      }
+    },
+    "aggregate:202603": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:19:01.044132+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202603.csv"
+      }
+    },
+    "download:202604": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:19:46.434262+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202604.7z",
+        "size_mb": 52.41
+      }
+    },
+    "extract:202604": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:19:49.446551+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202604.txt",
+        "size_mb": 442.93,
+        "sha256": "9c334f22d013cd11b9e47494cb313e475f4d86a8f80d0abf9eccb5c3b859cfc7"
+      }
+    },
+    "process:202604": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:20:37.885762+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202604.csv",
+        "size_mb": 742.93
+      }
+    },
+    "enrich:202604": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:20:48.854737+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202604.csv",
+        "size_mb": 19.64
+      }
+    },
+    "aggregate:202604": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:20:49.187299+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202604.csv"
+      }
+    },
+    "download:202605": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:21:08.097261+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202605.7z",
+        "size_mb": 51.09
+      }
+    },
+    "extract:202605": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:21:10.942945+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202605.txt",
+        "size_mb": 431.86,
+        "sha256": "9b6f2652e3e68a2fe6482c022daf77bbd8fb229d810c05cb925b64e38362e7ad"
+      }
+    },
+    "process:202605": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:21:58.849805+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\processed_cagedmov202605.csv",
+        "size_mb": 724.6
+      }
+    },
+    "enrich:202605": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:22:09.833024+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202605.csv",
+        "size_mb": 18.21
+      }
+    },
+    "aggregate:202605": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:22:10.147035+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\processed\\tech_cagedmov202605.csv"
+      }
+    },
+    "download:202606": {
+      "status": "complete",
+      "updated_at": "2026-08-11T13:22:10.150034+00:00",
+      "metadata": {
+        "path": "C:\\Users\\wesll\\Documents\\Empregos área Tec\\data\\raw\\caged\\CAGEDMOV202606.7z",
+        "size_mb": 50.6
+      }
+    }
+  }
+}

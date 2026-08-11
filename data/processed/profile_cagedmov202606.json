@@ -1,0 +1,715 @@
+{
+  "arquivo": "CAGEDMOV202606.txt",
+  "tamanho_mb": 427.31,
+  "hash_sha256": "ff9ee116b70fd13e3978358f71e48a915d42256c2d1f877adbaa82f0b8610131",
+  "separador_detectado": ";",
+  "encoding_detectado": "utf-8",
+  "total_linhas": 4295101,
+  "duplicadas_na_mesma_particao": 10485,
+  "colunas": [
+    "competênciamov",
+    "região",
+    "uf",
+    "município",
+    "seção",
+    "subclasse",
+    "saldomovimentação",
+    "cbo2002ocupação",
+    "categoria",
+    "graudeinstrução",
+    "idade",
+    "horascontratuais",
+    "raçacor",
+    "sexo",
+    "tipoempregador",
+    "tipoestabelecimento",
+    "tipomovimentação",
+    "tipodedeficiência",
+    "indtrabintermitente",
+    "indtrabparcial",
+    "salário",
+    "tamestabjan",
+    "indicadoraprendiz",
+    "origemdainformação",
+    "competênciadec",
+    "indicadordeforadoprazo",
+    "unidadesaláriocódigo",
+    "valorsaláriofixo"
+  ],
+  "tipos_amostra": {
+    "competênciamov": "int64",
+    "região": "int64",
+    "uf": "int64",
+    "município": "int64",
+    "seção": "object",
+    "subclasse": "int64",
+    "saldomovimentação": "int64",
+    "cbo2002ocupação": "int64",
+    "categoria": "int64",
+    "graudeinstrução": "int64",
+    "idade": "int64",
+    "horascontratuais": "object",
+    "raçacor": "int64",
+    "sexo": "int64",
+    "tipoempregador": "int64",
+    "tipoestabelecimento": "int64",
+    "tipomovimentação": "int64",
+    "tipodedeficiência": "int64",
+    "indtrabintermitente": "int64",
+    "indtrabparcial": "int64",
+    "salário": "object",
+    "tamestabjan": "int64",
+    "indicadoraprendiz": "int64",
+    "origemdainformação": "int64",
+    "competênciadec": "int64",
+    "indicadordeforadoprazo": "int64",
+    "unidadesaláriocódigo": "int64",
+    "valorsaláriofixo": "object"
+  },
+  "nulos": {
+    "competênciamov": 0,
+    "região": 0,
+    "uf": 0,
+    "município": 0,
+    "seção": 0,
+    "subclasse": 0,
+    "saldomovimentação": 0,
+    "cbo2002ocupação": 0,
+    "categoria": 0,
+    "graudeinstrução": 0,
+    "idade": 1449,
+    "horascontratuais": 0,
+    "raçacor": 0,
+    "sexo": 0,
+    "tipoempregador": 0,
+    "tipoestabelecimento": 0,
+    "tipomovimentação": 0,
+    "tipodedeficiência": 0,
+    "indtrabintermitente": 0,
+    "indtrabparcial": 0,
+    "salário": 0,
+    "tamestabjan": 0,
+    "indicadoraprendiz": 0,
+    "origemdainformação": 0,
+    "competênciadec": 0,
+    "indicadordeforadoprazo": 0,
+    "unidadesaláriocódigo": 0,
+    "valorsaláriofixo": 0
+  },
+  "cardinalidade": {
+    "competênciamov": 1,
+    "região": 6,
+    "uf": 28,
+    "município": 5488,
+    "seção": 22,
+    "subclasse": 1302,
+    "saldomovimentação": 2,
+    "cbo2002ocupação": 2497,
+    "categoria": 7,
+    "graudeinstrução": 12,
+    "idade": 84,
+    "horascontratuais": 3298,
+    "raçacor": 7,
+    "sexo": 2,
+    "tipoempregador": 3,
+    "tipoestabelecimento": 3,
+    "tipomovimentação": 11,
+    "tipodedeficiência": 7,
+    "indtrabintermitente": 3,
+    "indtrabparcial": 3,
+    "salário": 272951,
+    "tamestabjan": 10,
+    "indicadoraprendiz": 2,
+    "origemdainformação": 2,
+    "competênciadec": 1,
+    "indicadordeforadoprazo": 1,
+    "unidadesaláriocódigo": 8,
+    "valorsaláriofixo": 269183
+  },
+  "min_max": {
+    "idade": {
+      "min": 14.0,
+      "max": 98.0
+    },
+    "valorsaláriofixo": {
+      "min": 0.0,
+      "max": 30063428.0
+    },
+    "horascontratuais": {
+      "min": 0.0,
+      "max": 60.0
+    },
+    "salário": {
+      "min": 0.0,
+      "max": 30063428.0
+    }
+  },
+  "frequencias_top_20": {
+    "competênciadec": [
+      {
+        "valor": 202606,
+        "quantidade": 4295101
+      }
+    ],
+    "saldomovimentação": [
+      {
+        "valor": 1,
+        "quantidade": 2220131
+      },
+      {
+        "valor": -1,
+        "quantidade": 2074970
+      }
+    ],
+    "categoria": [
+      {
+        "valor": 101,
+        "quantidade": 3925040
+      },
+      {
+        "valor": 106,
+        "quantidade": 175054
+      },
+      {
+        "valor": 103,
+        "quantidade": 104909
+      },
+      {
+        "valor": 111,
+        "quantidade": 56086
+      },
+      {
+        "valor": 105,
+        "quantidade": 28252
+      },
+      {
+        "valor": 102,
+        "quantidade": 5043
+      },
+      {
+        "valor": 999,
+        "quantidade": 717
+      }
+    ],
+    "indicadordeforadoprazo": [
+      {
+        "valor": 0,
+        "quantidade": 4295101
+      }
+    ],
+    "seção": [
+      {
+        "valor": "G",
+        "quantidade": 996143
+      },
+      {
+        "valor": "N",
+        "quantidade": 783272
+      },
+      {
+        "valor": "C",
+        "quantidade": 607264
+      },
+      {
+        "valor": "F",
+        "quantidade": 403842
+      },
+      {
+        "valor": "I",
+        "quantidade": 267304
+      },
+      {
+        "valor": "H",
+        "quantidade": 251551
+      },
+      {
+        "valor": "Q",
+        "quantidade": 221928
+      },
+      {
+        "valor": "A",
+        "quantidade": 206704
+      },
+      {
+        "valor": "M",
+        "quantidade": 156670
+      },
+      {
+        "valor": "P",
+        "quantidade": 103448
+      },
+      {
+        "valor": "J",
+        "quantidade": 77658
+      },
+      {
+        "valor": "S",
+        "quantidade": 76836
+      },
+      {
+        "valor": "K",
+        "quantidade": 41657
+      },
+      {
+        "valor": "R",
+        "quantidade": 32059
+      },
+      {
+        "valor": "E",
+        "quantidade": 24683
+      },
+      {
+        "valor": "L",
+        "quantidade": 15462
+      },
+      {
+        "valor": "O",
+        "quantidade": 12420
+      },
+      {
+        "valor": "B",
+        "quantidade": 11214
+      },
+      {
+        "valor": "D",
+        "quantidade": 4699
+      },
+      {
+        "valor": "T",
+        "quantidade": 197
+      }
+    ],
+    "tipomovimentação": [
+      {
+        "valor": 97,
+        "quantidade": 2218680
+      },
+      {
+        "valor": 31,
+        "quantidade": 882797
+      },
+      {
+        "valor": 40,
+        "quantidade": 760047
+      },
+      {
+        "valor": 43,
+        "quantidade": 338644
+      },
+      {
+        "valor": 32,
+        "quantidade": 63327
+      },
+      {
+        "valor": 90,
+        "quantidade": 20812
+      },
+      {
+        "valor": 60,
+        "quantidade": 6098
+      },
+      {
+        "valor": 98,
+        "quantidade": 2526
+      },
+      {
+        "valor": 35,
+        "quantidade": 1451
+      },
+      {
+        "valor": 50,
+        "quantidade": 614
+      },
+      {
+        "valor": 33,
+        "quantidade": 105
+      }
+    ],
+    "competênciamov": [
+      {
+        "valor": 202606,
+        "quantidade": 4295101
+      }
+    ],
+    "raçacor": [
+      {
+        "valor": 3,
+        "quantidade": 2162812
+      },
+      {
+        "valor": 1,
+        "quantidade": 1675444
+      },
+      {
+        "valor": 2,
+        "quantidade": 402283
+      },
+      {
+        "valor": 4,
+        "quantidade": 29292
+      },
+      {
+        "valor": 5,
+        "quantidade": 14683
+      },
+      {
+        "valor": 6,
+        "quantidade": 9870
+      },
+      {
+        "valor": 9,
+        "quantidade": 717
+      }
+    ],
+    "tipodedeficiência": [
+      {
+        "valor": 0,
+        "quantidade": 4271314
+      },
+      {
+        "valor": 1,
+        "quantidade": 8760
+      },
+      {
+        "valor": 3,
+        "quantidade": 4571
+      },
+      {
+        "valor": 4,
+        "quantidade": 4551
+      },
+      {
+        "valor": 2,
+        "quantidade": 4205
+      },
+      {
+        "valor": 5,
+        "quantidade": 891
+      },
+      {
+        "valor": 6,
+        "quantidade": 809
+      }
+    ],
+    "indtrabintermitente": [
+      {
+        "valor": 0,
+        "quantidade": 4238298
+      },
+      {
+        "valor": 1,
+        "quantidade": 56086
+      },
+      {
+        "valor": 9,
+        "quantidade": 717
+      }
+    ],
+    "indtrabparcial": [
+      {
+        "valor": 0,
+        "quantidade": 4209794
+      },
+      {
+        "valor": 9,
+        "quantidade": 55508
+      },
+      {
+        "valor": 1,
+        "quantidade": 29799
+      }
+    ],
+    "uf": [
+      {
+        "valor": 35,
+        "quantidade": 1381985
+      },
+      {
+        "valor": 31,
+        "quantidade": 457529
+      },
+      {
+        "valor": 41,
+        "quantidade": 325677
+      },
+      {
+        "valor": 33,
+        "quantidade": 283714
+      },
+      {
+        "valor": 42,
+        "quantidade": 273188
+      },
+      {
+        "valor": 43,
+        "quantidade": 247532
+      },
+      {
+        "valor": 29,
+        "quantidade": 165669
+      },
+      {
+        "valor": 52,
+        "quantidade": 159676
+      },
+      {
+        "valor": 23,
+        "quantidade": 115453
+      },
+      {
+        "valor": 26,
+        "quantidade": 109624
+      },
+      {
+        "valor": 51,
+        "quantidade": 109236
+      },
+      {
+        "valor": 32,
+        "quantidade": 99313
+      },
+      {
+        "valor": 15,
+        "quantidade": 83292
+      },
+      {
+        "valor": 53,
+        "quantidade": 78864
+      },
+      {
+        "valor": 50,
+        "quantidade": 65987
+      },
+      {
+        "valor": 13,
+        "quantidade": 48974
+      },
+      {
+        "valor": 21,
+        "quantidade": 46564
+      },
+      {
+        "valor": 25,
+        "quantidade": 41227
+      },
+      {
+        "valor": 24,
+        "quantidade": 38881
+      },
+      {
+        "valor": 27,
+        "quantidade": 30305
+      }
+    ],
+    "unidadesaláriocódigo": [
+      {
+        "valor": 5,
+        "quantidade": 3953103
+      },
+      {
+        "valor": 1,
+        "quantidade": 266147
+      },
+      {
+        "valor": 7,
+        "quantidade": 32368
+      },
+      {
+        "valor": 6,
+        "quantidade": 20713
+      },
+      {
+        "valor": 2,
+        "quantidade": 17358
+      },
+      {
+        "valor": 4,
+        "quantidade": 2162
+      },
+      {
+        "valor": 99,
+        "quantidade": 2095
+      },
+      {
+        "valor": 3,
+        "quantidade": 1155
+      }
+    ],
+    "tamestabjan": [
+      {
+        "valor": 5,
+        "quantidade": 601234
+      },
+      {
+        "valor": 10,
+        "quantidade": 586564
+      },
+      {
+        "valor": 7,
+        "quantidade": 497581
+      },
+      {
+        "valor": 4,
+        "quantidade": 454941
+      },
+      {
+        "valor": 6,
+        "quantidade": 436942
+      },
+      {
+        "valor": 1,
+        "quantidade": 386177
+      },
+      {
+        "valor": 2,
+        "quantidade": 371395
+      },
+      {
+        "valor": 3,
+        "quantidade": 367860
+      },
+      {
+        "valor": 8,
+        "quantidade": 323289
+      },
+      {
+        "valor": 9,
+        "quantidade": 269118
+      }
+    ],
+    "sexo": [
+      {
+        "valor": 1,
+        "quantidade": 2458741
+      },
+      {
+        "valor": 3,
+        "quantidade": 1836360
+      }
+    ],
+    "tipoempregador": [
+      {
+        "valor": 0,
+        "quantidade": 4168567
+      },
+      {
+        "valor": 2,
+        "quantidade": 126490
+      },
+      {
+        "valor": 1,
+        "quantidade": 44
+      }
+    ],
+    "graudeinstrução": [
+      {
+        "valor": 7,
+        "quantidade": 2815161
+      },
+      {
+        "valor": 9,
+        "quantidade": 337777
+      },
+      {
+        "valor": 6,
+        "quantidade": 320133
+      },
+      {
+        "valor": 5,
+        "quantidade": 273745
+      },
+      {
+        "valor": 8,
+        "quantidade": 175783
+      },
+      {
+        "valor": 4,
+        "quantidade": 165848
+      },
+      {
+        "valor": 2,
+        "quantidade": 75593
+      },
+      {
+        "valor": 3,
+        "quantidade": 52747
+      },
+      {
+        "valor": 80,
+        "quantidade": 49447
+      },
+      {
+        "valor": 1,
+        "quantidade": 19480
+      },
+      {
+        "valor": 10,
+        "quantidade": 6729
+      },
+      {
+        "valor": 11,
+        "quantidade": 2658
+      }
+    ],
+    "tipoestabelecimento": [
+      {
+        "valor": 1,
+        "quantidade": 4084283
+      },
+      {
+        "valor": 3,
+        "quantidade": 124391
+      },
+      {
+        "valor": 4,
+        "quantidade": 86427
+      }
+    ],
+    "região": [
+      {
+        "valor": 3,
+        "quantidade": 2222541
+      },
+      {
+        "valor": 4,
+        "quantidade": 846397
+      },
+      {
+        "valor": 2,
+        "quantidade": 599567
+      },
+      {
+        "valor": 5,
+        "quantidade": 413763
+      },
+      {
+        "valor": 1,
+        "quantidade": 211157
+      },
+      {
+        "valor": 99,
+        "quantidade": 1676
+      }
+    ],
+    "indicadoraprendiz": [
+      {
+        "valor": 0,
+        "quantidade": 4190192
+      },
+      {
+        "valor": 1,
+        "quantidade": 104909
+      }
+    ],
+    "origemdainformação": [
+      {
+        "valor": 1,
+        "quantidade": 4294384
+      },
+      {
+        "valor": 3,
+        "quantidade": 717
+      }
+    ]
+  }
+}
