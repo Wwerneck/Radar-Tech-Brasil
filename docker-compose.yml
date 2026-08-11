@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: radar-tech-postgres
+    environment:
+      POSTGRES_DB: radar_tech
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - radar_tech_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d radar_tech"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  radar_tech_postgres_data:
+
