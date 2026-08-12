@@ -13,12 +13,34 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 EXTERNAL_DIR = PROJECT_ROOT / "data" / "external"
 COLOR_SEQUENCE = ["#2563eb", "#16a34a", "#dc2626", "#9333ea", "#ea580c", "#0891b2"]
+AGE_GROUP_LABELS = {
+    "Ate 20": "Até 20",
+    "21-25": "21-25",
+    "26-30": "26-30",
+    "31-35": "31-35",
+    "36-40": "36-40",
+    "41-50": "41-50",
+    "51+": "51+",
+    "Nao informado": "Não informado",
+}
+EDUCATION_LABELS = {
+    "Fundamental incompleto": "Ensino fundamental incompleto",
+    "Fundamental completo": "Ensino fundamental completo",
+    "Medio incompleto": "Ensino médio incompleto",
+    "Medio completo": "Ensino médio completo",
+    "Superior incompleto": "Ensino superior incompleto",
+    "Superior completo": "Ensino superior completo",
+    "Mestrado": "Mestrado",
+    "Doutorado": "Doutorado",
+    "Pos-graduacao completa": "Pós-graduação completa",
+    "Pos-graduacao incompleta": "Pós-graduação incompleta",
+}
 METRIC_LABELS = {
-    "total_admissoes": "Admissoes",
+    "total_admissoes": "Admissões",
     "total_desligamentos": "Desligamentos",
     "saldo_empregos": "Saldo de empregos",
-    "remuneracao_media": "Remuneracao media",
-    "remuneracao_mediana": "Remuneracao mediana",
+    "remuneracao_media": "Salário médio",
+    "remuneracao_mediana": "Salário mediano",
 }
 
 
@@ -83,11 +105,12 @@ categories = sorted(by_category["categoria_tech"].unique())
 regions = sorted(by_uf["regiao_nome"].dropna().unique())
 states = sorted(by_uf["uf_sigla"].dropna().unique())
 occupations = sorted(by_occupation["ocupacao"].dropna().unique())
+by_education = by_education[by_education["escolaridade"] != "Analfabeto"]
 age_groups = ["Ate 20", "21-25", "26-30", "31-35", "36-40", "41-50", "51+", "Nao informado"]
 education_labels = sorted(by_education["escolaridade"].dropna().unique())
 
 st.title("Radar Tech Brasil")
-st.caption("Inteligencia de Dados sobre o Mercado de Tecnologia Brasileiro")
+st.caption("Inteligência de Dados sobre o Mercado de Tecnologia Brasileiro")
 
 with st.sidebar:
     st.header("Filtros")
@@ -118,11 +141,38 @@ with st.sidebar:
             if st.checkbox(category, value=True, key=f"category_{category}")
         ]
 
-    selected_regions = st.multiselect("Regiao", regions, default=[])
-    selected_states = st.multiselect("UF", states, default=[])
-    selected_age_groups = st.multiselect("Faixa etaria", age_groups, default=[])
-    selected_education = st.multiselect("Escolaridade", education_labels, default=[])
-    selected_occupations = st.multiselect("Ocupacao", occupations, default=[])
+    selected_regions = st.multiselect(
+        "Região",
+        regions,
+        default=[],
+        placeholder="Selecione uma ou mais regiões",
+    )
+    selected_states = st.multiselect(
+        "UF",
+        states,
+        default=[],
+        placeholder="Selecione uma ou mais UFs",
+    )
+    selected_age_groups = st.multiselect(
+        "Faixa etária",
+        age_groups,
+        default=[],
+        format_func=lambda value: AGE_GROUP_LABELS.get(value, value),
+        placeholder="Selecione uma ou mais faixas etárias",
+    )
+    selected_education = st.multiselect(
+        "Escolaridade",
+        education_labels,
+        default=[],
+        format_func=lambda value: EDUCATION_LABELS.get(value, value),
+        placeholder="Selecione um ou mais níveis de escolaridade",
+    )
+    selected_occupations = st.multiselect(
+        "Ocupação",
+        occupations,
+        default=[],
+        placeholder="Selecione uma ou mais ocupações",
+    )
 
 if not selected_categories:
     st.warning("Selecione pelo menos uma categoria para visualizar os dados.")
@@ -172,10 +222,10 @@ median_salary_delta = variation(first_month["remuneracao_mediana"], last_month["
 
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Registros tech", format_number(total_records))
-col2.metric("Admissoes", format_number(total_admissions), format_percent(admission_delta))
+col2.metric("Admissões", format_number(total_admissions), format_percent(admission_delta))
 col3.metric("Desligamentos", format_number(total_dismissals))
 col4.metric("Saldo", format_number(total_balance))
-col5.metric("Remuneracao media", format_currency(weighted_salary))
+col5.metric("Salário médio", format_currency(weighted_salary))
 
 best_month = filtered_overview.sort_values("saldo_empregos", ascending=False).iloc[0]
 worst_month = filtered_overview.sort_values("saldo_empregos").iloc[0]
@@ -206,10 +256,10 @@ ctx4.info(
 
 tabs = st.tabs(
     [
-        "Visao Geral",
+        "Visão Geral",
         "Mercado",
-        "Profissoes",
-        "Salarios",
+        "Profissões",
+        "Salários",
         "Estados",
         "Perfil Profissional",
         "Insights",
@@ -232,8 +282,8 @@ with tabs[0]:
         color="metrica",
         markers=True,
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"valor": "Registros", "competencia_label": "Competencia", "metrica": "Metrica"},
-        title="Evolucao mensal do mercado tech formal",
+        labels={"valor": "Registros", "competencia_label": "Competência", "metrica": "Métrica"},
+        title="Evolução mensal do mercado tech formal",
     )
     fig.update_xaxes(type="category")
     st.plotly_chart(fig, use_container_width=True)
@@ -252,17 +302,17 @@ with tabs[0]:
         color="metrica",
         markers=True,
         color_discrete_sequence=["#2563eb", "#16a34a"],
-        labels={"valor": "Remuneracao", "competencia_label": "Competencia", "metrica": "Metrica"},
-        title="Evolucao salarial",
+        labels={"valor": "Salário", "competencia_label": "Competência", "metrica": "Métrica"},
+        title="Evolução salarial",
     )
     salary_fig.update_xaxes(type="category")
     st.plotly_chart(salary_fig, use_container_width=True)
     st.markdown(
         """
         <div style="font-size: 0.92rem; line-height: 1.55; margin-top: -0.75rem; color: #64748b;">
-          <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #2563eb; margin-right: 8px;"></span><strong>Remuneracao media:</strong> soma dos salarios validos dividida pela quantidade de registros.</div>
-          <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #16a34a; margin-right: 8px;"></span><strong>Remuneracao mediana:</strong> valor central da distribuicao salarial, menos sensivel a salarios muito altos.</div>
-          <div style="margin-top: 0.35rem;">Ambas excluem salarios iguais a zero e registros marcados como salario extremo.</div>
+          <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #2563eb; margin-right: 8px;"></span><strong>Salário médio:</strong> soma dos salários válidos dividida pela quantidade de registros.</div>
+          <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: #16a34a; margin-right: 8px;"></span><strong>Salário mediano:</strong> valor central da distribuição salarial, menos sensível a salários muito altos.</div>
+          <div style="margin-top: 0.35rem;">Ambas excluem salários iguais a zero e registros marcados como salário extremo.</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -311,11 +361,11 @@ with tabs[2]:
         color="categoria_tech",
         orientation="h",
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"registros": "Registros", "ocupacao": "Ocupacao"},
-        title="Top ocupacoes tech por volume",
+        labels={"registros": "Registros", "ocupacao": "Ocupação"},
+        title="Top ocupações tech por volume",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de ocupacoes", csv_bytes(occupation_total), "ocupacoes.csv")
+    st.download_button("Baixar tabela de ocupações", csv_bytes(occupation_total), "ocupacoes.csv")
     st.dataframe(occupation_total.head(100), use_container_width=True, hide_index=True)
 
 with tabs[3]:
@@ -334,8 +384,8 @@ with tabs[3]:
         y="categoria_tech",
         orientation="h",
         color_discrete_sequence=["#2563eb"],
-        labels={"remuneracao_mediana": "Remuneracao mediana", "categoria_tech": "Categoria"},
-        title="Remuneracao mediana por categoria",
+        labels={"remuneracao_mediana": "Salário mediano", "categoria_tech": "Categoria"},
+        title="Salário mediano por categoria",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -354,11 +404,11 @@ with tabs[3]:
         y="remuneracao_mediana",
         color="regiao_nome",
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"uf_sigla": "UF", "remuneracao_mediana": "Remuneracao mediana"},
-        title="Top UFs por remuneracao mediana",
+        labels={"uf_sigla": "UF", "remuneracao_mediana": "Salário mediano"},
+        title="Top UFs por salário mediano",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de salarios por UF", csv_bytes(salary_by_uf), "salarios_uf.csv")
+    st.download_button("Baixar tabela de salários por UF", csv_bytes(salary_by_uf), "salarios_uf.csv")
     st.dataframe(salary_by_category, use_container_width=True, hide_index=True)
 
 with tabs[4]:
@@ -384,7 +434,7 @@ with tabs[4]:
         scope="south america",
         color_continuous_scale="RdYlGn",
         labels={"saldo_empregos": "Saldo", "registros": "Registros"},
-        title="Distribuicao geografica por UF",
+        title="Distribuição geográfica por UF",
     )
     fig.update_geos(fitbounds="locations", visible=False)
     st.plotly_chart(fig, use_container_width=True)
@@ -395,7 +445,7 @@ with tabs[4]:
         y="saldo_empregos",
         color="regiao_nome",
         color_discrete_sequence=COLOR_SEQUENCE,
-        labels={"uf_sigla": "UF", "saldo_empregos": "Saldo", "regiao_nome": "Regiao"},
+        labels={"uf_sigla": "UF", "saldo_empregos": "Saldo", "regiao_nome": "Região"},
         title="Saldo tech por UF",
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -416,6 +466,9 @@ with tabs[5]:
         lambda value: age_groups.index(value) if value in age_groups else 99
     )
     age_total = age_total.sort_values("ordem").drop(columns="ordem")
+    age_total["faixa_etaria"] = age_total["faixa_etaria"].map(
+        lambda value: AGE_GROUP_LABELS.get(value, value)
+    )
     education_total = (
         filtered_education.groupby(["grau_instrucao", "escolaridade"], as_index=False)
         .agg(
@@ -426,50 +479,53 @@ with tabs[5]:
         )
         .sort_values("grau_instrucao")
     )
+    education_total["escolaridade"] = education_total["escolaridade"].map(
+        lambda value: EDUCATION_LABELS.get(value, value)
+    )
     left, right = st.columns(2)
     with left:
-        fig = px.bar(age_total, x="faixa_etaria", y="registros", title="Distribuicao por faixa etaria")
+        fig = px.bar(age_total, x="faixa_etaria", y="registros", title="Distribuição por faixa etária")
         st.plotly_chart(fig, use_container_width=True)
-        st.download_button("Baixar faixa etaria", csv_bytes(age_total), "faixa_etaria.csv")
+        st.download_button("Baixar faixa etária", csv_bytes(age_total), "faixa_etaria.csv")
     with right:
-        fig = px.bar(education_total, x="escolaridade", y="registros", title="Distribuicao por escolaridade")
+        fig = px.bar(education_total, x="escolaridade", y="registros", title="Distribuição por escolaridade")
         fig.update_xaxes(tickangle=-35)
         st.plotly_chart(fig, use_container_width=True)
         st.download_button("Baixar escolaridade", csv_bytes(education_total), "escolaridade.csv")
 
 with tabs[6]:
-    st.subheader("Insights automaticos")
+    st.subheader("Insights automáticos")
     st.write(
-        f"Saldo positivo de {format_number(total_balance)} vagas no periodo filtrado, "
-        f"com {format_number(total_admissions)} admissoes e {format_number(total_dismissals)} desligamentos."
+        f"Saldo positivo de {format_number(total_balance)} vagas no período filtrado, "
+        f"com {format_number(total_admissions)} admissões e {format_number(total_dismissals)} desligamentos."
     )
     st.write(
-        f"A categoria com maior volume no filtro atual e {top_category['categoria_tech']}, "
+        f"A categoria com maior volume no filtro atual é {top_category['categoria_tech']}, "
         f"com {format_number(top_category['registros'])} registros."
     )
     st.write(
-        f"A variacao de admissoes entre {format_competence(first_month['competencia'])} e "
+        f"A variação de admissões entre {format_competence(first_month['competencia'])} e "
         f"{format_competence(last_month['competencia'])} foi de {format_percent(admission_delta)}."
     )
     st.write(
-        f"A variacao da remuneracao mediana no mesmo intervalo foi de {format_percent(median_salary_delta)}."
+        f"A variação do salário mediano no mesmo intervalo foi de {format_percent(median_salary_delta)}."
     )
     st.caption(
-        "Esses insights sao descritivos. Eles indicam associacoes e movimentos observados, "
-        "mas nao provam causalidade."
+        "Esses insights são descritivos. Eles indicam associações e movimentos observados, "
+        "mas não provam causalidade."
     )
 
 with tabs[7]:
     st.subheader("Metodologia")
-    st.write("Fonte principal: microdados publicos do Novo CAGED.")
-    st.write("Fonte complementar: CBO 2002 oficial para identificacao das ocupacoes.")
-    st.write("Periodo consolidado: 07/2025 a 06/2026.")
+    st.write("Fonte principal: microdados públicos do Novo CAGED.")
+    st.write("Fonte complementar: CBO 2002 oficial para identificação das ocupações.")
+    st.write("Período consolidado: 07/2025 a 06/2026.")
     st.write("Recorte tech: mapeamento versionado em `data/external/cbo_tech_mapping.csv`.")
     st.write(
-        "Remuneracao media e mediana consideram salarios maiores que zero e removem "
-        "registros marcados como salario extremo."
+        "Salário médio e salário mediano consideram salários maiores que zero e removem "
+        "registros marcados como salário extremo."
     )
     st.write(
-        "Limitacoes: CBO nao informa stack, senioridade, modalidade remota ou detalhes modernos "
-        "da funcao exercida. Dominios marcados como pendentes devem ser revisados contra layout oficial."
+        "Limitações: CBO não informa stack, senioridade, modalidade remota ou detalhes modernos "
+        "da função exercida. Domínios marcados como pendentes devem ser revisados contra layout oficial."
     )
