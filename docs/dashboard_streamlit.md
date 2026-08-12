@@ -23,22 +23,36 @@ Ou usando o Python do ambiente virtual:
 ```text
 data/processed/agg_tech_overview_mensal.csv
 data/processed/agg_tech_by_category_mensal.csv
-data/processed/agg_tech_by_uf_mensal.csv
+data/processed/agg_tech_by_uf_mensal_enriched.csv
 data/processed/agg_tech_by_occupation_mensal.csv
 data/processed/agg_tech_by_age_group_mensal.csv
-data/processed/agg_tech_by_education_mensal.csv
+data/processed/agg_tech_by_education_mensal_enriched.csv
+data/external/uf_centroids.csv
 ```
 
-## Páginas
+## Paginas
 
-- Visão Geral
+- Visao Geral
 - Mercado
-- Profissões
-- Salários
+- Profissoes
+- Salarios
 - Estados
 - Perfil Profissional
+- Insights
 - Metodologia
 
-## Observação
+## Recursos
 
-A primeira versão lê agregados CSV locais. Quando o PostgreSQL estiver disponível, a camada de leitura pode ser substituída por queries nas views `radar.vw_*`.
+- Periodo exibido em formato brasileiro `MM/AAAA`.
+- Filtros opcionais por categoria, regiao, UF, ocupacao, faixa etaria e escolaridade.
+- Cards de contexto com maior e menor saldo mensal, categoria lider e UF com maior volume.
+- Rotulos amigaveis nas metricas dos graficos.
+- Evolucao salarial com legenda explicativa para media e mediana.
+- Downloads CSV das principais tabelas analiticas.
+- Mapa geografico por UF com volume e saldo de empregos.
+- Aba de insights automaticos com leitura descritiva do periodo filtrado.
+- Aba de metodologia com fontes, recorte, criterios salariais e limitacoes.
+
+## Observacao
+
+A versao atual le agregados CSV locais. Quando o PostgreSQL estiver disponivel, a camada de leitura pode ser substituida por queries nas views `radar.vw_*`.

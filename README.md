@@ -134,6 +134,7 @@ Profissoes
 Salarios
 Estados
 Perfil Profissional
+Insights
 Metodologia
 ```
 
@@ -229,6 +230,5 @@ Status atual:
 2. Executar carga real no PostgreSQL quando houver servidor local disponivel.
 3. Carregar fato detalhada para as 12 competencias.
 4. Migrar o dashboard de CSV para views PostgreSQL.
-5. Adicionar screenshots do dashboard ao README.
-6. Revisar mapeamento CBO tech com criterios qualitativos adicionais.
-7. Preparar publicacao no GitHub com commits pequenos e historico limpo.
+5. Revisar mapeamento CBO tech com criterios qualitativos adicionais.
+6. Publicar o repositorio no GitHub quando a autenticacao estiver disponivel.
