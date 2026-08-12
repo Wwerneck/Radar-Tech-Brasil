@@ -226,7 +226,7 @@ with st.sidebar:
         placeholder="Escolha as UFs",
     )
     selected_age_groups = st.multiselect(
-        "Faixa etária",
+        "Idade",
         age_groups,
         default=[],
         format_func=lambda value: AGE_GROUP_LABELS.get(value, value),
