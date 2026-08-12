@@ -35,6 +35,19 @@ EDUCATION_LABELS = {
     "Pos-graduacao completa": "Pós-graduação completa",
     "Pos-graduacao incompleta": "Pós-graduação incompleta",
 }
+UF_NAME_LABELS = {
+    "Sao Paulo": "São Paulo",
+    "Parana": "Paraná",
+    "Ceara": "Ceará",
+    "Goias": "Goiás",
+    "Espirito Santo": "Espírito Santo",
+    "Para": "Pará",
+    "Maranhao": "Maranhão",
+    "Paraiba": "Paraíba",
+    "Piaui": "Piauí",
+    "Rondonia": "Rondônia",
+    "Amapa": "Amapá",
+}
 METRIC_LABELS = {
     "total_admissoes": "Admissões",
     "total_desligamentos": "Desligamentos",
@@ -86,6 +99,11 @@ def variation(first: float, last: float) -> float:
 def csv_bytes(df: pd.DataFrame) -> bytes:
     """Return a dataframe as downloadable CSV bytes."""
     return df.to_csv(index=False, sep=";").encode("utf-8")
+
+
+def format_display_table(df: pd.DataFrame, labels: dict[str, str]) -> pd.DataFrame:
+    """Return a copy with user-facing column names for Streamlit tables."""
+    return df.rename(columns=labels)
 
 
 overview = load_csv(PROCESSED_DIR / "agg_tech_overview_mensal.csv")
@@ -151,7 +169,7 @@ with st.sidebar:
         "UF",
         states,
         default=[],
-        placeholder="Selecione uma ou mais UFs",
+        placeholder="Escolha as UFs",
     )
     selected_age_groups = st.multiselect(
         "Faixa etária",
@@ -340,8 +358,18 @@ with tabs[1]:
         title="Volume e saldo por categoria tech",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de categorias", csv_bytes(category_total), "categorias.csv")
-    st.dataframe(category_total, use_container_width=True, hide_index=True)
+    category_table = format_display_table(
+        category_total,
+        {
+            "categoria_tech": "Categoria",
+            "registros": "Registros",
+            "admissoes": "Admissões",
+            "desligamentos": "Desligamentos",
+            "saldo_empregos": "Saldo de empregos",
+        },
+    )
+    st.download_button("Baixar tabela de categorias", csv_bytes(category_table), "categorias.csv")
+    st.dataframe(category_table, use_container_width=True, hide_index=True)
 
 with tabs[2]:
     occupation_total = (
@@ -365,8 +393,20 @@ with tabs[2]:
         title="Top ocupações tech por volume",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de ocupações", csv_bytes(occupation_total), "ocupacoes.csv")
-    st.dataframe(occupation_total.head(100), use_container_width=True, hide_index=True)
+    occupation_table = format_display_table(
+        occupation_total,
+        {
+            "codigo_cbo": "Código CBO",
+            "ocupacao": "Ocupação",
+            "categoria_tech": "Categoria",
+            "registros": "Registros",
+            "admissoes": "Admissões",
+            "desligamentos": "Desligamentos",
+            "saldo_empregos": "Saldo de empregos",
+        },
+    )
+    st.download_button("Baixar tabela de ocupações", csv_bytes(occupation_table), "ocupacoes.csv")
+    st.dataframe(occupation_table.head(100), use_container_width=True, hide_index=True)
 
 with tabs[3]:
     salary_by_category = (
@@ -398,6 +438,9 @@ with tabs[3]:
         )
         .sort_values("remuneracao_mediana", ascending=False)
     )
+    salary_by_uf["uf_nome"] = salary_by_uf["uf_nome"].map(
+        lambda value: UF_NAME_LABELS.get(value, value)
+    )
     fig = px.bar(
         salary_by_uf.head(15),
         x="uf_sigla",
@@ -408,8 +451,28 @@ with tabs[3]:
         title="Top UFs por salário mediano",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de salários por UF", csv_bytes(salary_by_uf), "salarios_uf.csv")
-    st.dataframe(salary_by_category, use_container_width=True, hide_index=True)
+    salary_category_table = format_display_table(
+        salary_by_category,
+        {
+            "categoria_tech": "Categoria",
+            "remuneracao_media": "Salário médio",
+            "remuneracao_mediana": "Salário mediano",
+            "registros": "Registros",
+        },
+    )
+    salary_uf_table = format_display_table(
+        salary_by_uf,
+        {
+            "uf_sigla": "UF",
+            "uf_nome": "Estado",
+            "regiao_nome": "Região",
+            "remuneracao_media": "Salário médio",
+            "remuneracao_mediana": "Salário mediano",
+            "registros": "Registros",
+        },
+    )
+    st.download_button("Baixar tabela de salários por UF", csv_bytes(salary_uf_table), "salarios_uf.csv")
+    st.dataframe(salary_category_table, use_container_width=True, hide_index=True)
 
 with tabs[4]:
     uf_total = (
@@ -422,6 +485,7 @@ with tabs[4]:
         )
         .sort_values("registros", ascending=False)
     )
+    uf_total["uf_nome"] = uf_total["uf_nome"].map(lambda value: UF_NAME_LABELS.get(value, value))
     map_data = uf_total.merge(uf_centroids, on="uf", how="left")
     fig = px.scatter_geo(
         map_data,
@@ -430,13 +494,39 @@ with tabs[4]:
         size="registros",
         color="saldo_empregos",
         hover_name="uf_nome",
-        hover_data={"uf_sigla": True, "registros": True, "saldo_empregos": True, "latitude": False, "longitude": False},
+        hover_data={
+            "uf_sigla": True,
+            "registros": ":,.0f",
+            "saldo_empregos": ":,.0f",
+            "latitude": False,
+            "longitude": False,
+        },
         scope="south america",
         color_continuous_scale="RdYlGn",
-        labels={"saldo_empregos": "Saldo", "registros": "Registros"},
+        labels={
+            "uf_sigla": "UF",
+            "saldo_empregos": "Saldo",
+            "registros": "Registros",
+            "uf_nome": "Estado",
+        },
         title="Distribuição geográfica por UF",
     )
-    fig.update_geos(fitbounds="locations", visible=False)
+    fig.update_geos(
+        fitbounds="locations",
+        visible=True,
+        bgcolor="#0b0f17",
+        landcolor="#1f2937",
+        countrycolor="#475569",
+        coastlinecolor="#475569",
+        showcountries=True,
+        showcoastlines=True,
+        showland=True,
+    )
+    fig.update_layout(
+        paper_bgcolor="#0b0f17",
+        plot_bgcolor="#0b0f17",
+        margin=dict(l=0, r=0, t=55, b=0),
+    )
     st.plotly_chart(fig, use_container_width=True)
 
     fig = px.bar(
@@ -449,8 +539,21 @@ with tabs[4]:
         title="Saldo tech por UF",
     )
     st.plotly_chart(fig, use_container_width=True)
-    st.download_button("Baixar tabela de UFs", csv_bytes(uf_total), "ufs.csv")
-    st.dataframe(uf_total, use_container_width=True, hide_index=True)
+    uf_table = format_display_table(
+        uf_total,
+        {
+            "uf": "Código da UF",
+            "uf_sigla": "UF",
+            "uf_nome": "Estado",
+            "regiao_nome": "Região",
+            "registros": "Registros",
+            "admissoes": "Admissões",
+            "desligamentos": "Desligamentos",
+            "saldo_empregos": "Saldo de empregos",
+        },
+    )
+    st.download_button("Baixar tabela de UFs", csv_bytes(uf_table), "ufs.csv")
+    st.dataframe(uf_table, use_container_width=True, hide_index=True)
 
 with tabs[5]:
     age_total = (
@@ -486,12 +589,35 @@ with tabs[5]:
     with left:
         fig = px.bar(age_total, x="faixa_etaria", y="registros", title="Distribuição por faixa etária")
         st.plotly_chart(fig, use_container_width=True)
-        st.download_button("Baixar faixa etária", csv_bytes(age_total), "faixa_etaria.csv")
+        age_table = format_display_table(
+            age_total,
+            {
+                "faixa_etaria": "Faixa etária",
+                "registros": "Registros",
+                "admissoes": "Admissões",
+                "desligamentos": "Desligamentos",
+                "saldo_empregos": "Saldo de empregos",
+            },
+        )
+        st.download_button("Baixar faixa etária", csv_bytes(age_table), "faixa_etaria.csv")
+        st.dataframe(age_table, use_container_width=True, hide_index=True)
     with right:
         fig = px.bar(education_total, x="escolaridade", y="registros", title="Distribuição por escolaridade")
         fig.update_xaxes(tickangle=-35)
         st.plotly_chart(fig, use_container_width=True)
-        st.download_button("Baixar escolaridade", csv_bytes(education_total), "escolaridade.csv")
+        education_table = format_display_table(
+            education_total,
+            {
+                "grau_instrucao": "Código de escolaridade",
+                "escolaridade": "Escolaridade",
+                "registros": "Registros",
+                "admissoes": "Admissões",
+                "desligamentos": "Desligamentos",
+                "saldo_empregos": "Saldo de empregos",
+            },
+        )
+        st.download_button("Baixar escolaridade", csv_bytes(education_table), "escolaridade.csv")
+        st.dataframe(education_table, use_container_width=True, hide_index=True)
 
 with tabs[6]:
     st.subheader("Insights automáticos")
