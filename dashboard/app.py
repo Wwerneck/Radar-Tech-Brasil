@@ -106,6 +106,61 @@ def format_display_table(df: pd.DataFrame, labels: dict[str, str]) -> pd.DataFra
     return df.rename(columns=labels)
 
 
+def format_table_values(df: pd.DataFrame) -> pd.DataFrame:
+    """Format table values for Brazilian readers."""
+    result = df.copy()
+    integer_columns = {
+        "Código da UF",
+        "Registros",
+        "Admissões",
+        "Desligamentos",
+        "Saldo de empregos",
+        "Código de escolaridade",
+    }
+    currency_columns = {"Salário médio", "Salário mediano"}
+    for column in result.columns:
+        if column in integer_columns:
+            result[column] = result[column].map(format_number)
+        elif column in currency_columns:
+            result[column] = result[column].map(format_currency)
+    return result
+
+
+def weighted_average(df: pd.DataFrame, value_column: str, weight_column: str) -> float:
+    """Return a weighted average using record counts as weights."""
+    weights = df[weight_column].fillna(0)
+    values = df[value_column].fillna(0)
+    total_weight = weights.sum()
+    if total_weight == 0:
+        return 0.0
+    return float((values * weights).sum() / total_weight)
+
+
+def weighted_median(df: pd.DataFrame, value_column: str, weight_column: str) -> float:
+    """Return a weighted median approximation from aggregated values."""
+    ordered = df[[value_column, weight_column]].dropna().sort_values(value_column)
+    if ordered.empty:
+        return 0.0
+    cumulative = ordered[weight_column].cumsum()
+    cutoff = ordered[weight_column].sum() / 2
+    return float(ordered.loc[cumulative >= cutoff, value_column].iloc[0])
+
+
+def salary_summary(df: pd.DataFrame, group_columns: list[str]) -> pd.DataFrame:
+    """Aggregate salary metrics with weights instead of simple averages."""
+    rows = []
+    result_columns = group_columns + ["remuneracao_media", "remuneracao_mediana", "registros"]
+    for keys, group in df.groupby(group_columns, dropna=False):
+        if not isinstance(keys, tuple):
+            keys = (keys,)
+        row = dict(zip(group_columns, keys))
+        row["remuneracao_media"] = weighted_average(group, "remuneracao_media", "registros")
+        row["remuneracao_mediana"] = weighted_median(group, "remuneracao_mediana", "registros")
+        row["registros"] = int(group["registros"].sum())
+        rows.append(row)
+    return pd.DataFrame(rows, columns=result_columns)
+
+
 overview = load_csv(PROCESSED_DIR / "agg_tech_overview_mensal.csv")
 by_category = load_csv(PROCESSED_DIR / "agg_tech_by_category_mensal.csv")
 by_uf = load_csv(PROCESSED_DIR / "agg_tech_by_uf_mensal_enriched.csv")
@@ -151,7 +206,6 @@ with st.sidebar:
     category_action = st.radio("Categorias", ["Todas", "Personalizada"], horizontal=True)
     if category_action == "Todas":
         selected_categories = categories
-        st.caption(f"{len(categories)} categorias selecionadas")
     else:
         selected_categories = [
             category
@@ -368,6 +422,7 @@ with tabs[1]:
             "saldo_empregos": "Saldo de empregos",
         },
     )
+    category_table = format_table_values(category_table)
     st.download_button("Baixar tabela de categorias", csv_bytes(category_table), "categorias.csv")
     st.dataframe(category_table, use_container_width=True, hide_index=True)
 
@@ -405,18 +460,21 @@ with tabs[2]:
             "saldo_empregos": "Saldo de empregos",
         },
     )
+    occupation_table = format_table_values(occupation_table)
     st.download_button("Baixar tabela de ocupações", csv_bytes(occupation_table), "ocupacoes.csv")
     st.dataframe(occupation_table.head(100), use_container_width=True, hide_index=True)
 
 with tabs[3]:
-    salary_by_category = (
-        filtered_category.groupby("categoria_tech", as_index=False)
-        .agg(
-            remuneracao_media=("remuneracao_media", "mean"),
-            remuneracao_mediana=("remuneracao_mediana", "median"),
-            registros=("registros", "sum"),
-        )
-        .sort_values("remuneracao_mediana", ascending=False)
+    salary_by_category = salary_summary(
+        filtered_category,
+        ["categoria_tech"],
+    ).sort_values("remuneracao_mediana", ascending=False)
+    salary_by_uf = salary_summary(
+        filtered_uf,
+        ["uf_sigla", "uf_nome", "regiao_nome"],
+    ).sort_values("remuneracao_mediana", ascending=False)
+    salary_by_uf["uf_nome"] = salary_by_uf["uf_nome"].map(
+        lambda value: UF_NAME_LABELS.get(value, value)
     )
     fig = px.bar(
         salary_by_category.sort_values("remuneracao_mediana"),
@@ -428,19 +486,6 @@ with tabs[3]:
         title="Salário mediano por categoria",
     )
     st.plotly_chart(fig, use_container_width=True)
-
-    salary_by_uf = (
-        filtered_uf.groupby(["uf_sigla", "uf_nome", "regiao_nome"], as_index=False)
-        .agg(
-            remuneracao_media=("remuneracao_media", "mean"),
-            remuneracao_mediana=("remuneracao_mediana", "median"),
-            registros=("registros", "sum"),
-        )
-        .sort_values("remuneracao_mediana", ascending=False)
-    )
-    salary_by_uf["uf_nome"] = salary_by_uf["uf_nome"].map(
-        lambda value: UF_NAME_LABELS.get(value, value)
-    )
     fig = px.bar(
         salary_by_uf.head(15),
         x="uf_sigla",
@@ -471,6 +516,8 @@ with tabs[3]:
             "registros": "Registros",
         },
     )
+    salary_category_table = format_table_values(salary_category_table)
+    salary_uf_table = format_table_values(salary_uf_table)
     st.download_button("Baixar tabela de salários por UF", csv_bytes(salary_uf_table), "salarios_uf.csv")
     st.dataframe(salary_category_table, use_container_width=True, hide_index=True)
 
@@ -552,6 +599,7 @@ with tabs[4]:
             "saldo_empregos": "Saldo de empregos",
         },
     )
+    uf_table = format_table_values(uf_table)
     st.download_button("Baixar tabela de UFs", csv_bytes(uf_table), "ufs.csv")
     st.dataframe(uf_table, use_container_width=True, hide_index=True)
 
@@ -599,6 +647,7 @@ with tabs[5]:
                 "saldo_empregos": "Saldo de empregos",
             },
         )
+        age_table = format_table_values(age_table)
         st.download_button("Baixar faixa etária", csv_bytes(age_table), "faixa_etaria.csv")
         st.dataframe(age_table, use_container_width=True, hide_index=True)
     with right:
@@ -616,6 +665,7 @@ with tabs[5]:
                 "saldo_empregos": "Saldo de empregos",
             },
         )
+        education_table = format_table_values(education_table)
         st.download_button("Baixar escolaridade", csv_bytes(education_table), "escolaridade.csv")
         st.dataframe(education_table, use_container_width=True, hide_index=True)
 
