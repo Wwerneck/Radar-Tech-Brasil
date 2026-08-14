@@ -1,8 +1,20 @@
 # Radar Tech Brasil
 
+<p align="center">
+  <a href="https://github.com/Wwerneck/Radar-Tech-Brasil/actions/workflows/tests.yml"><img alt="Testes" src="https://github.com/Wwerneck/Radar-Tech-Brasil/actions/workflows/tests.yml/badge.svg?branch=main"></a>
+  <a href="./CHANGELOG.md"><img alt="Release" src="https://img.shields.io/badge/release-v1.0.0-2ea44f"></a>
+</p>
+
 Inteligência de dados sobre o mercado formal de tecnologia no Brasil, construída com microdados públicos do Novo CAGED e a Classificação Brasileira de Ocupações (CBO).
 
 ![Dashboard Radar Tech Brasil](docs/assets/dashboard_overview.png)
+
+## Avaliação rápida
+
+- **Problema resolvido:** transforma microdados públicos do Novo CAGED em informação acionável sobre o mercado formal de tecnologia.
+- **Evidência visual:** o dashboard acima consolida filtros, mapas, séries temporais, salários e insights.
+- **Qualidade:** 19 testes automatizados e CI executado a cada push ou pull request.
+- **Como testar localmente:** instale as dependências e execute `streamlit run dashboard/app.py`.
 
 ## Sobre o Projeto
 
@@ -275,4 +287,4 @@ Status atual:
 4. Migrar o dashboard de CSV para views PostgreSQL.
 5. Revisar o mapeamento CBO tech com critérios qualitativos adicionais.
 6. Atualizar screenshots finais do dashboard após a estabilização visual.
-7. Publicar o repositório no GitHub quando a autenticação estiver disponível.
+7. Publicar uma demonstração web do dashboard Streamlit quando houver ambiente de hospedagem disponível.
